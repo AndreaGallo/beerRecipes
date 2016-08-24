@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
         <title>Beer Recipes</title>
     </head>
-    <body>
+    <body ng-controller="beerRecipeCtrl" >
 
-    <h1>Beer Recipes</h1>
-
+        <h1>Beer Recipes</h1>
+        <input type="text" ng-model="andrea">
+        {{andrea}}
     </body>
+    
 </html>
