@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
-        <script src="js/angular.min.js"></script>
-        <script src="js/app.js"></script>
         <title>Beer Recipes</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/select.min.css">
+        <link rel="stylesheet" href="css/angular-ui-notification.min.css">
+  
     </head>
-    <body ng-controller="beerRecipeCtrl" >
+    <body>
 
-        <h1>Beer Recipes</h1>
-        <input type="text" ng-model="andrea">
-        {{andrea}}
+        <div class="container">
+            <h1>Beer Recipes</h1>
+            <a ui-sref="recipes">State 1</a>
+            <a ui-sref="newRecipe">State 2</a>
+            <div ui-view></div>
+        </div>
+        
+        
     </body>
+    <!--
+        IE8 support, see AngularJS Internet Explorer Compatibility http://docs.angularjs.org/guide/ie
+        For Firefox 3.6, you will also need to include jQuery and ECMAScript 5 shim
+    -->
+    <!--[if lt IE 9]>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
+        <script>
+        document.createElement('ui-select');
+        document.createElement('ui-select-match');
+        document.createElement('ui-select-choices');
+        </script>
+    <![endif]-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-sanitize.min.js"></script>
+    <script src="js/angular-ui-notification.min.js"></script>
+    <script src="js/select.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/beerRecipes.service.js"></script>
+    <script src="js/beerRecipes.controller.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
     
-</html>
+</html> 

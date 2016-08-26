@@ -1,0 +1,92 @@
+<div class="well">
+    <ng-form name="recipeForm">   
+        <div class="form-group ng-class:{'has-error':recipeForm.name.$invalid}">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" ng-model="recipe.name" 
+                class="form-control" required>
+        </div>
+        <div class="form-group ng-class:{'has-error':recipeForm.style.$invalid}">
+            <label for="style">Style: </label>
+            <select name="style" id="style" 
+                class="form-control"
+                ng-options="style.name for style in beerStyles track by style.id"
+                ng-model="recipe.style"
+                required>
+            </select>
+        </div>
+        
+        <div class="form-group ng-class:{'has-error':recipeForm.grains.$invalid}">
+            <label>Grains</label>
+            <ui-select id="grains" name="grains" multiple ng-model="recipe.grains" theme="bootstrap"
+                ng-disabled="disabled" required>
+                <ui-select-match placeholder="Search and select grain...">{{$item}}</ui-select-match>
+
+                <ui-select-choices repeat="grain in grains | filter:$select.search">
+                {{grain}}
+                </ui-select-choices>
+
+                <ui-select-no-choice>
+                    No results found..
+                </ui-select-no-choice>
+            </ui-select>
+        </div>
+
+        <div class="form-group ng-class:{'has-error':recipeForm.hops.$invalid}">
+            <label>Hops</label>
+            <ui-select id="hops" name="hops" multiple ng-model="recipe.hops" theme="bootstrap" 
+                ng-disabled="disabled" required>
+                <ui-select-match placeholder="Search and select hop...">{{$item}}</ui-select-match>
+
+                <ui-select-choices repeat="hop in hops | filter:$select.search">
+                {{hop}}
+                </ui-select-choices>
+
+                <ui-select-no-choice>
+                    No results found..
+                </ui-select-no-choice>
+            </ui-select>
+        </div>
+
+        <div class="form-group ng-class:{'has-error':recipeForm.yeasts.$invalid}">
+            <label>Yeasts</label>
+            <ui-select id="yeasts" name="yeasts" multiple ng-model="recipe.yeasts" theme="bootstrap" 
+                ng-disabled="disabled" required> 
+                <ui-select-match placeholder="Search and select yeast...">{{$item}}</ui-select-match>
+
+                <ui-select-choices repeat="yeast in yeasts | filter:$select.search">
+                {{yeast}}
+                </ui-select-choices>
+                
+                <ui-select-no-choice>
+                    No results found..
+                </ui-select-no-choice>
+            </ui-select>
+        </div>
+
+        <div class="form-group">
+            <label>Extras</label>
+            <ui-select id="extras" name="extras" multiple ng-model="recipe.extras" theme="bootstrap" 
+                ng-disabled="disabled"> 
+                <ui-select-match placeholder="Search and select extra...">{{$item}}</ui-select-match>
+
+                <ui-select-choices repeat="extra in extras | filter:$select.search">
+                {{extra}}
+                </ui-select-choices>
+                
+                <ui-select-no-choice>
+                    No results found..
+                </ui-select-no-choice>
+            </ui-select>
+        </div>
+
+        <div class="form-group ng-class:{'has-error':recipeForm.procedure.$invalid}">
+            <label for="procedure">Description</label>
+            <textarea id="procedure" name="procedure" ng-model="recipe.procedure" class="form-control" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <button type="reset" class="btn btn-default" ng-disabled="" ng-click="resetRecipe()">Reset</button>
+            <button type="save" class="btn btn-primary" ng-disabled="recipeForm.$invalid" ng-click="saveRecipe()">Save</button>
+        </div>
+    </ng-form>
+</div>
